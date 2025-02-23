@@ -6,10 +6,12 @@
 	<header>
 		<div class="header-content">
 			<div class="logo">
-				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-					<path fill="#ff6b6b" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-13v10h2v-4h2l2 4h2l-2-4c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-6zm2 2h4v2h-4v-2z"/>
-				</svg>
-				<h1>RESELLA</h1>
+				<a href="/" class="logo-link">
+					<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+						<path fill="#ff6b6b" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-13v10h2v-4h2l2 4h2l-2-4c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-6zm2 2h4v2h-4v-2z"/>
+					</svg>
+					<h1>RESELLA</h1>
+				</a>
 			</div>
 			<nav>
 				<ul>
@@ -26,6 +28,18 @@
 							<li><a href="/shopping-info/event">이벤트정보</a></li>
 						</ul>
 					</li>
+					<li class:active={$page.url.pathname.includes('/tools')}>
+						<a href="/tools">리셀러 도구</a>
+						<ul class="dropdown">
+							<li><a href="/tools/calculator">마진 계산기</a></li>
+							<li><a href="/tools/fees">수수료 비교</a></li>
+							<li><a href="/tools/size">사이즈 변환</a></li>
+							<li><a href="/tools/customs">관세 계산</a></li>
+						</ul>
+					</li>
+					<li class:active={$page.url.pathname.includes('/resell-search')}>
+						<a href="/resell-search">리셀서치</a>
+					</li>
 					<li class:active={$page.url.pathname.includes('/community')}>
 						<a href="/community">커뮤니티</a>
 					</li>
@@ -34,6 +48,9 @@
 					</li>
 					<li class:active={$page.url.pathname.includes('/api')}>
 						<a href="/api">API</a>
+					</li>
+					<li class:active={$page.url.pathname.includes('/resell-lens')}>
+						<a href="/resell-lens">리셀렌즈</a>
 					</li>
 				</ul>
 			</nav>
@@ -145,5 +162,17 @@
 		width: 32px;
 		height: 32px;
 		color: #ff6b6b;
+	}
+
+	.logo-link {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.logo-link:hover {
+		opacity: 0.9;
 	}
 </style>

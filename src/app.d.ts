@@ -8,6 +8,13 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+	
+	namespace NodeJS {
+		interface ProcessEnv {
+			GOOGLE_SHEET_ID: string;
+			GOOGLE_CREDENTIALS: string;
+		}
+	}
 }
 
 export {};
