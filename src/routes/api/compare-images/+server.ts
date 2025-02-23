@@ -1,15 +1,15 @@
 import { CLARIFAI_API_KEY } from '$env/static/private';
 import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import * as clarifai from 'clarifai-nodejs-grpc';
 
-const { ClarifaiStub, grpc } = require("clarifai-nodejs-grpc");
+const stub = new clarifai.ClarifaiStub();
 
 export const POST: RequestHandler = async ({ request }) => {
 	const { image1Url, image2Url } = await request.json();
 
 	try {
-		const stub = ClarifaiStub.grpc();
-		const metadata = new grpc.Metadata();
+		const metadata = new clarifai.grpc.Metadata();
 		metadata.set("authorization", `Key ${CLARIFAI_API_KEY}`);
 
 		// Clarifai API 호출 로직
