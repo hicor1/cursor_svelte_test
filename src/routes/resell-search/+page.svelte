@@ -168,36 +168,6 @@
 		cursor: pointer;
 	}
 
-	.result-card {
-		display: flex;
-		gap: 20px;
-		padding: 20px;
-		background: white;
-		border-radius: 12px;
-		margin-bottom: 20px;
-		box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-	}
-
-	.result-card img {
-		width: 200px;
-		height: 200px;
-		object-fit: contain;
-	}
-
-	.options {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-		gap: 10px;
-		margin-top: 10px;
-	}
-
-	.option {
-		padding: 8px;
-		background: #f8f9fa;
-		border-radius: 4px;
-		text-align: center;
-	}
-
 	.product-group {
 		margin-bottom: 2rem;
 		padding: 1.5rem;
@@ -418,22 +388,6 @@
 		border-radius: 3px;
 		color: #495057;
 		white-space: nowrap;
-	}
-
-	.market-info-table {
-		margin-top: 0;
-		width: auto;
-		border-collapse: collapse;
-	}
-
-	.market-info-table th, .market-info-table td {
-		border: 1px solid #ddd;
-		padding: 8px;
-		text-align: center;
-	}
-
-	.market-info-table th {
-		background-color: #f2f2f2;
 	}
 
 	.no-results {
