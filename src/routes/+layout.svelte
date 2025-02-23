@@ -158,12 +158,6 @@
 		font-weight: normal;
 	}
 
-	.icon {
-		width: 32px;
-		height: 32px;
-		color: #ff6b6b;
-	}
-
 	.logo-link {
 		display: flex;
 		align-items: center;

@@ -161,9 +161,4 @@
 		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 		gap: 20px;
 	}
-
-	/* 테이블 스타일 개선 */
-	.notice-table tr:hover {
-		background: #f8f9fa;
-	}
 </style> 
