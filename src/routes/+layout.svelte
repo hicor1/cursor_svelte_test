@@ -46,12 +46,6 @@
 					<li class:active={$page.url.pathname.includes('/notices')}>
 						<a href="/notices">공지사항</a>
 					</li>
-					<li class:active={$page.url.pathname.includes('/api')}>
-						<a href="/api">API</a>
-					</li>
-					<li class:active={$page.url.pathname.includes('/resell-lens')}>
-						<a href="/resell-lens">리셀렌즈</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
