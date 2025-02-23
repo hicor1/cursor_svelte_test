@@ -1,5 +1,3 @@
-import type { SearchResult, CacheItem } from '$lib/types';
-
 interface CacheItem<T> {
     data: T;
     timestamp: number;
