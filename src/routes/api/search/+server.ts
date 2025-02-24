@@ -7,7 +7,7 @@ export async function POST({ request }) {
 		const { query } = await request.json();
 		
 		const { data, error } = await supabase
-			.from('market_price')
+			.from('market_price_heavy')
 			.select('*')
 			.or(`기준_제품명_원문.ilike.%${query}%,기준_품번_1.ilike.%${query}%`);
 
@@ -32,8 +32,8 @@ export async function POST({ request }) {
 				};
 			}
 
-			acc[productId].options[size].markets[row.기준_마켓구분] = {
-				siteName: row.기준_마켓구분,
+			acc[productId].options[size].markets[row.비교_마켓구분] = {
+				siteName: row.비교_마켓구분,
 				price: row.비교_즉시구매가격,
 				stock: row.비교_재고량,
 				url: row.비교_제품_URL,

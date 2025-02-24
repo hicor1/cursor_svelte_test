@@ -1,6 +1,9 @@
 <script lang="ts">
 	import type { GroupedResult, MarketData, SearchResult, ProductOption, TagInfo } from '$lib/types';
 	import { onMount } from 'svelte';
+	import { searchResults } from '$lib/stores/search';
+	import { page } from '$app/stores';
+
 	let searchQuery = '';
 	let searching = false;
 	let results: GroupedResult[] = [];
@@ -15,6 +18,19 @@
 	let showSearchHistory = false;
 	let searchInputFocused = false;
 	const MAX_RECENT_SEARCHES = 10;  // 최대 10개까지 저장
+	let showAllProductIds = false;
+	const INITIAL_PRODUCT_IDS_COUNT = 12;  // 2줄에 표시할 품번 개수 (6개씩 2줄)
+
+	// URL의 검색어 파라미터 가져오기
+	$: searchQuery = $page.url.searchParams.get('q') || '';
+
+	// store에서 검색 결과 구독
+	$: results = $searchResults;
+
+	// 페이지 진입 시 검색어가 있으면 자동으로 검색 실행
+	$: if (searchQuery && !results.length) {
+		handleSearch();
+	}
 
 	// 페이지 로드시 최근 검색어 불러오기
 	onMount(() => {
@@ -37,36 +53,18 @@
 		localStorage.setItem('recentSearches', JSON.stringify(recentSearches));
 	}
 
-	async function searchProducts() {
+	async function handleSearch() {
 		if (searchQuery.length < 2) {
 			alert('검색어는 2글자 이상 입력해야 합니다.');
 			return;
 		}
 		searching = true;
 		try {
-			const response = await fetch('/api/search', {
-				method: 'POST',
-				body: JSON.stringify({ 
-					query: searchQuery,
-					searchFields: [
-						{ field: 'productId', boost: 2 },
-						{ 
-							field: 'productName', 
-							boost: 1,
-							partial: true,  // 부분 문자열 매칭 허용
-							ignoreCase: true  // 대소문자 구분 없음
-						},
-						{ 
-							field: 'originalName', 
-							boost: 1,
-							partial: true,  // 부분 문자열 매칭 허용
-							ignoreCase: true  // 대소문자 구분 없음
-						}
-					]
-				})
-			});
-			results = await response.json();
+			await searchResults.search(searchQuery);
 			addRecentSearch(searchQuery);
+		} catch (error) {
+			console.error('Search error:', error);
+			alert('검색 중 오류가 발생했습니다.');
 		} finally {
 			searching = false;
 		}
@@ -127,6 +125,28 @@
 			showSearchHistory = false;
 		}, 200);
 	}
+
+	// productIdTags 계산
+	$: productIdTags = results.reduce((acc, product) => {
+		const tag = product.productId;
+		const existing = acc.find(item => item.tag === tag);
+		if (existing) {
+			existing.count++;
+		} else {
+			acc.push({ tag, count: 1 });
+		}
+		return acc;
+	}, [] as TagInfo[]);
+
+	// 보여줄 품번 필터링
+	$: visibleProductIds = showAllProductIds 
+		? productIdTags 
+		: productIdTags.slice(0, INITIAL_PRODUCT_IDS_COUNT);
+
+	// 더보기 버튼 핸들러
+	function toggleProductIds() {
+		showAllProductIds = !showAllProductIds;
+	}
 </script>
 
 <div class="search-container">
@@ -140,7 +160,7 @@
 				type="text" 
 				bind:value={searchQuery}
 				placeholder="품번 또는 제품명을 입력하세요 (예: B75806, Samba OG)"
-				on:keydown={(e) => e.key === 'Enter' && searchProducts()}
+				on:keydown={(e) => e.key === 'Enter' && handleSearch()}
 				on:focus={handleSearchFocus}
 				on:blur={handleSearchBlur}
 			/>
@@ -154,7 +174,7 @@
 								class="history-item"
 								on:mousedown={() => {
 									searchQuery = search;
-									searchProducts();
+									handleSearch();
 								}}
 							>
 								<svg class="history-icon" width="14" height="14" viewBox="0 0 24 24">
@@ -173,7 +193,7 @@
 				</div>
 			{/if}
 		</div>
-		<button on:click={searchProducts} disabled={searching}>
+		<button on:click={handleSearch} disabled={searching}>
 			{searching ? '검색중...' : '검색'}
 		</button>
 		<button 
@@ -222,7 +242,7 @@
 						class="recent-search-tag"
 						on:click={() => {
 							searchQuery = search;
-							searchProducts();
+							handleSearch();
 						}}
 					>
 						{search}
@@ -251,6 +271,7 @@
 			{#if !verticalLayout}
 				<div class="compact-filters">
 					<div class="filter-chips">
+						<!-- 품번 필터 -->
 						<div class="filter-group">
 							<span class="filter-label">품번:</span>
 							<div class="chip-container">
@@ -261,18 +282,45 @@
 								>
 									전체
 								</button>
-								{#each results as product}
+								<div class="product-chips" class:expanded={showAllProductIds}>
+									{#each productIdTags as tag, i}
+										{#if showAllProductIds || i < INITIAL_PRODUCT_IDS_COUNT}
+											<button
+												class="filter-chip"
+												class:active={selectedProductId === tag.tag}
+												on:click={() => handleProductChange(tag.tag)}
+											>
+												{tag.tag}
+											</button>
+										{/if}
+									{/each}
+								</div>
+								{#if productIdTags.length > INITIAL_PRODUCT_IDS_COUNT}
 									<button 
-										class="filter-chip"
-										class:active={selectedProductId === product.productId}
-										on:click={() => handleProductChange(product.productId)}
-										title={product.productName}
+										class="show-more-btn"
+										on:click={() => showAllProductIds = !showAllProductIds}
 									>
-										{product.productId}
+										<span>{showAllProductIds ? '접기' : '더보기'}</span>
+										<svg 
+											width="12" 
+											height="12" 
+											viewBox="0 0 12 12"
+											class:rotated={showAllProductIds}
+										>
+											<path 
+												d="M2 4 L6 8 L10 4" 
+												stroke="currentColor" 
+												fill="none" 
+												stroke-width="2" 
+												stroke-linecap="round"
+											/>
+										</svg>
 									</button>
-								{/each}
+								{/if}
 							</div>
 						</div>
+
+						<!-- 사이즈 필터 -->
 						<div class="filter-group">
 							<span class="filter-label">사이즈:</span>
 							<div class="chip-container">
@@ -286,7 +334,7 @@
 								<div class="size-chips" class:expanded={showAllSizes}>
 									{#each getAllSizesFromProducts(getFilteredProducts()) as size, i}
 										{#if showAllSizes || i < MAX_VISIBLE_SIZES}
-											<button 
+											<button
 												class="filter-chip"
 												class:active={selectedSize === size}
 												on:click={() => handleSizeChange(size)}
