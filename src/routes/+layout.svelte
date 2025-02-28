@@ -48,6 +48,33 @@
 							홈
 						</a>
 					</li>
+					<li class:active={$page.url.pathname.includes('/xfind')}>
+						<a href="/xfind">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" class="nav-icon">
+								<defs>
+									<linearGradient id="xfind-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+										<stop offset="0%" style="stop-color:#0F2027;stop-opacity:1" />
+										<stop offset="50%" style="stop-color:#203A43;stop-opacity:1" />
+										<stop offset="100%" style="stop-color:#2C5364;stop-opacity:1" />
+									</linearGradient>
+									<filter id="xfind-glow">
+										<feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+										<feMerge>
+											<feMergeNode in="coloredBlur" />
+											<feMergeNode in="SourceGraphic" />
+										</feMerge>
+									</filter>
+								</defs>
+								<rect x="10" y="10" width="180" height="180" rx="15" fill="url(#xfind-grad)" />
+								<rect x="20" y="85" width="160" height="30" fill="#0ff" opacity="0.15" />
+								<path d="M60 50 L140 150 M60 150 L140 50" stroke="#0ff" stroke-width="15" stroke-linecap="round" filter="url(#xfind-glow)" />
+								<circle cx="100" cy="100" r="60" stroke="#0ff" stroke-width="3" fill="none" opacity="0.3" />
+								<circle cx="100" cy="100" r="70" stroke="#0ff" stroke-width="2" fill="none" opacity="0.2" />
+								<circle cx="100" cy="100" r="80" stroke="#0ff" stroke-width="1" fill="none" opacity="0.1" />
+							</svg>
+							XFind
+						</a>
+					</li>
 					<li class:active={$page.url.pathname.includes('/shopping-info')} class="nav-item-with-dropdown">
 						<a href="/shopping-info" on:click|preventDefault={() => toggleDropdown('shopping')}>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
@@ -78,15 +105,6 @@
 							<li><a href="/tools/size">사이즈 변환</a></li>
 							<li><a href="/tools/customs">관세 계산</a></li>
 						</ul>
-					</li>
-					<li class:active={$page.url.pathname.includes('/resell-search')}>
-						<a href="/resell-search">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
-								<circle cx="11" cy="11" r="8"></circle>
-								<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-							</svg>
-							리셀서치
-						</a>
 					</li>
 					<li class:active={$page.url.pathname.includes('/community')}>
 						<a href="/community">

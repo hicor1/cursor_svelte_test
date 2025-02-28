@@ -150,7 +150,31 @@
 </script>
 
 <div class="search-container">
-	<h1>XFind</h1>
+	<div class="header-with-logo">
+		<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 200 200" class="xfind-logo">
+			<defs>
+				<linearGradient id="xfind-page-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" style="stop-color:#0F2027;stop-opacity:1" />
+					<stop offset="50%" style="stop-color:#203A43;stop-opacity:1" />
+					<stop offset="100%" style="stop-color:#2C5364;stop-opacity:1" />
+				</linearGradient>
+				<filter id="xfind-page-glow">
+					<feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+					<feMerge>
+						<feMergeNode in="coloredBlur" />
+						<feMergeNode in="SourceGraphic" />
+					</feMerge>
+				</filter>
+			</defs>
+			<rect x="10" y="10" width="180" height="180" rx="15" fill="url(#xfind-page-grad)" />
+			<rect x="20" y="85" width="160" height="30" fill="#0ff" opacity="0.15" />
+			<path d="M60 50 L140 150 M60 150 L140 50" stroke="#0ff" stroke-width="15" stroke-linecap="round" filter="url(#xfind-page-glow)" />
+			<circle cx="100" cy="100" r="60" stroke="#0ff" stroke-width="3" fill="none" opacity="0.3" />
+			<circle cx="100" cy="100" r="70" stroke="#0ff" stroke-width="2" fill="none" opacity="0.2" />
+			<circle cx="100" cy="100" r="80" stroke="#0ff" stroke-width="1" fill="none" opacity="0.1" />
+		</svg>
+		<h1>XFind</h1>
+	</div>
 	<div class="search-box">
 		<div class="search-input-wrapper">
 			<svg class="search-icon" width="20" height="20" viewBox="0 0 20 20">
@@ -448,7 +472,7 @@
 										<div class="option-tags" bind:clientWidth={tagContainerWidth}>
 											{#each Object.values(sizeData.markets)
 												.flatMap(m => [m.compareOption1, m.compareOption2])
-												.filter(Boolean)
+												.filter((option): option is string => option !== undefined && option !== null)
 												.reduce((acc, curr) => {
 													const existing = acc.find(item => item.tag === curr);
 													if (existing) {
@@ -517,14 +541,25 @@
 	.search-container {
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 12px;
+		padding: 1rem;
 	}
-
-	h1 {
-		font-size: 1.2rem;
-		margin: 0 0 12px 0;
+	
+	.header-with-logo {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
 	}
-
+	
+	.xfind-logo {
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+	}
+	
+	.header-with-logo h1 {
+		font-size: 1.5rem;
+		margin: 0;
+	}
+	
 	.search-box {
 		display: flex;
 		gap: 10px;

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XFind 로고 디자인 컨셉</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .concepts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        .concept {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: calc(33% - 20px);
+            min-width: 250px;
+            text-align: center;
+        }
+        .logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h2 {
+            color: #444;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #666;
+            line-height: 1.5;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        .preview {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .preview-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .preview-item span {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #777;
+        }
+        .mini-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>XFind 로고 디자인 컨셉</h1>
+    
+    <div class="concepts">
+        <div class="concept">
+            <div class="logo">
+                <!-- 디자인 1: X와 돋보기 결합형 -->
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#4568DC;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#B06AB3;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- 배경 원 -->
+                    <circle cx="100" cy="100" r="90" fill="url(#grad1)" />
+                    
+                    <!-- 돋보기 렌즈 -->
+                    <circle cx="85" cy="85" r="40" fill="white" stroke="#ffffff" stroke-width="8" opacity="0.9" />
+                    
+                    <!-- 돋보기 손잡이 -->
+                    <rect x="112" y="112" width="40" height="12" rx="6" 
+                          transform="rotate(45, 112, 112)" 
+                          fill="white" />
+                    
+                    <!-- X 문자 -->
+                    <path d="M70 60 L100 90 L70 120 M100 60 L70 90 L100 120" 
+                          stroke="#4568DC" stroke-width="12" stroke-linecap="round" fill="none" />
+                </svg>
+            </div>
+            <h2>디자인 1: X와 돋보기 결합형</h2>
+            <p>선명한 'X'가 돋보기 렌즈와 결합된 디자인으로, 검색의 본질을 시각적으로 표현합니다. 파란색과 보라색 그라데이션이 현대적이고 세련된 느낌을 줍니다.</p>
+            
+            <div class="preview">
+                <div class="preview-item">
+                    <div class="mini-logo">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad1-mini" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4568DC;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#B06AB3;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="90" fill="url(#grad1-mini)" />
+                            <circle cx="85" cy="85" r="40" fill="white" stroke="#ffffff" stroke-width="8" opacity="0.9" />
+                            <rect x="112" y="112" width="40" height="12" rx="6" 
+                                  transform="rotate(45, 112, 112)" 
+                                  fill="white" />
+                            <path d="M70 60 L100 90 L70 120 M100 60 L70 90 L100 120" 
+                                  stroke="#4568DC" stroke-width="12" stroke-linecap="round" fill="none" />
+                        </svg>
+                    </div>
+                    <span>앱 아이콘</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="concept">
+            <div class="logo">
+                <!-- 디자인 2: X-레이 컨셉 -->
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#0F2027;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#203A43;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#2C5364;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- 배경 사각형 -->
+                    <rect x="10" y="10" width="180" height="180" rx="15" fill="url(#grad2)" />
+                    
+                    <!-- X-레이 스캔 라인 -->
+                    <rect x="20" y="85" width="160" height="30" fill="#0ff" opacity="0.15" />
+                    
+                    <!-- X 문자 -->
+                    <path d="M60 50 L140 150 M60 150 L140 50" stroke="#0ff" stroke-width="15" stroke-linecap="round" filter="url(#glow)" />
+                    
+                    <!-- 스캔 효과 -->
+                    <circle cx="100" cy="100" r="60" stroke="#0ff" stroke-width="3" fill="none" opacity="0.3" />
+                    <circle cx="100" cy="100" r="70" stroke="#0ff" stroke-width="2" fill="none" opacity="0.2" />
+                    <circle cx="100" cy="100" r="80" stroke="#0ff" stroke-width="1" fill="none" opacity="0.1" />
+                </svg>
+            </div>
+            <h2>디자인 2: X-레이 컨셉</h2>
+            <p>X-레이처럼 무언가를 투시하는 컨셉으로, 깊이 있는 검색을 표현합니다. 어두운 배경에 청록색 형광 효과가 첨단 기술과 정밀함을 연상시킵니다.</p>
+            
+            <div class="preview">
+                <div class="preview-item">
+                    <div class="mini-logo">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad2-mini" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0F2027;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#203A43;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2C5364;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="glow-mini">
+                                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <rect x="10" y="10" width="180" height="180" rx="15" fill="url(#grad2-mini)" />
+                            <rect x="20" y="85" width="160" height="30" fill="#0ff" opacity="0.15" />
+                            <path d="M60 50 L140 150 M60 150 L140 50" stroke="#0ff" stroke-width="15" stroke-linecap="round" filter="url(#glow-mini)" />
+                            <circle cx="100" cy="100" r="60" stroke="#0ff" stroke-width="3" fill="none" opacity="0.3" />
+                            <circle cx="100" cy="100" r="70" stroke="#0ff" stroke-width="2" fill="none" opacity="0.2" />
+                            <circle cx="100" cy="100" r="80" stroke="#0ff" stroke-width="1" fill="none" opacity="0.1" />
+                        </svg>
+                    </div>
+                    <span>앱 아이콘</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="concept">
+            <div class="logo">
+                <!-- 디자인 3: 미래지향적 디자인 -->
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#000428;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#004e92;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="neon-glow">
+                            <feGaussianBlur stdDeviation="3" result="blur" />
+                            <feFlood flood-color="#4FC3F7" flood-opacity="1" result="color" />
+                            <feComposite in="color" in2="blur" operator="in" result="glow" />
+                            <feMerge>
+                                <feMergeNode in="glow" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- 배경 원 -->
+                    <circle cx="100" cy="100" r="90" fill="url(#grad3)" />
+                    
+                    <!-- 검색 결과 선 -->
+                    <line x1="100" y1="100" x2="30" y2="30" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="170" y2="30" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="30" y2="170" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="170" y2="170" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="20" y2="100" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="180" y2="100" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="100" y2="20" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    <line x1="100" y1="100" x2="100" y2="180" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                    
+                    <!-- 데이터 노드 -->
+                    <circle cx="30" cy="30" r="5" fill="#4FC3F7" />
+                    <circle cx="170" cy="30" r="5" fill="#4FC3F7" />
+                    <circle cx="30" cy="170" r="5" fill="#4FC3F7" />
+                    <circle cx="170" cy="170" r="5" fill="#4FC3F7" />
+                    <circle cx="20" cy="100" r="5" fill="#4FC3F7" />
+                    <circle cx="180" cy="100" r="5" fill="#4FC3F7" />
+                    <circle cx="100" cy="20" r="5" fill="#4FC3F7" />
+                    <circle cx="100" cy="180" r="5" fill="#4FC3F7" />
+                    
+                    <!-- X 텍스트 -->
+                    <path d="M60 60 L140 140 M60 140 L140 60" 
+                          stroke="#ffffff" stroke-width="12" stroke-linecap="round" 
+                          filter="url(#neon-glow)" />
+                </svg>
+            </div>
+            <h2>디자인 3: 미래지향적 디자인</h2>
+            <p>기하학적인 X 형태와 데이터 네트워크를 연상시키는 방사형 디자인입니다. 딥 블루와 네온 블루의 조합이 첨단 기술과 미래지향적인 느낌을 줍니다.</p>
+            
+            <div class="preview">
+                <div class="preview-item">
+                    <div class="mini-logo">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad3-mini" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#000428;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#004e92;stop-opacity:1" />
+                                </linearGradient>
+                                <filter id="neon-glow-mini">
+                                    <feGaussianBlur stdDeviation="3" result="blur" />
+                                    <feFlood flood-color="#4FC3F7" flood-opacity="1" result="color" />
+                                    <feComposite in="color" in2="blur" operator="in" result="glow" />
+                                    <feMerge>
+                                        <feMergeNode in="glow" />
+                                        <feMergeNode in="SourceGraphic" />
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <circle cx="100" cy="100" r="90" fill="url(#grad3-mini)" />
+                            <line x1="100" y1="100" x2="30" y2="30" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="170" y2="30" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="30" y2="170" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="170" y2="170" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="20" y2="100" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="180" y2="100" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="100" y2="20" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <line x1="100" y1="100" x2="100" y2="180" stroke="#4FC3F7" stroke-width="2" opacity="0.6" />
+                            <circle cx="30" cy="30" r="5" fill="#4FC3F7" />
+                            <circle cx="170" cy="30" r="5" fill="#4FC3F7" />
+                            <circle cx="30" cy="170" r="5" fill="#4FC3F7" />
+                            <circle cx="170" cy="170" r="5" fill="#4FC3F7" />
+                            <circle cx="20" cy="100" r="5" fill="#4FC3F7" />
+                            <circle cx="180" cy="100" r="5" fill="#4FC3F7" />
+                            <circle cx="100" cy="20" r="5" fill="#4FC3F7" />
+                            <circle cx="100" cy="180" r="5" fill="#4FC3F7" />
+                            <path d="M60 60 L140 140 M60 140 L140 60" 
+                                  stroke="#ffffff" stroke-width="12" stroke-linecap="round" 
+                                  filter="url(#neon-glow-mini)" />
+                        </svg>
+                    </div>
+                    <span>앱 아이콘</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <p style="text-align: center; margin-top: 40px;">
+        이 세 가지 디자인 중에서 XFind의 아이덴티티와 가장 잘 맞는 것을 선택하시거나, 
+        여러 요소들을 조합하여 최종 로고를 만들어볼 수 있습니다.
+    </p>
+    
+</body>
+</html> 
