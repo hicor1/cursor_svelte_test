@@ -4,6 +4,7 @@
 	import { searchResults } from '$lib/stores/search';
 	import Portal from '$lib/components/Portal.svelte';
 	import { writable } from 'svelte/store';
+	import MetaTags from '$lib/components/MetaTags.svelte';
 	
 	let searchQuery = '';
 	let searchInputFocused = false;
@@ -135,6 +136,12 @@
 		}
 	];
 </script>
+
+<MetaTags
+	title="Theresella - 카드뉴스 제작 플랫폼"
+	description="손쉽게 만들고 공유하는 카드뉴스 플랫폼"
+	url="https://theresella.com"
+/>
 
 <svelte:window on:resize={handleResize} />
 
